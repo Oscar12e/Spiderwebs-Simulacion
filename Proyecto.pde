@@ -1,16 +1,16 @@
 import controlP5.*;
 
 ControlP5 cp5;
+ArrayList<Carnada> carnadas;
 
-void setup()
-{
+void setup() {
   size(500, 500);
   background(0);
   initControls();
+  carnadas = new ArrayList();
 }
 
-void initControls()
-{
+void initControls() {
   cp5 = new ControlP5(this);
   cp5.addSlider("Gravedad")
     .setPosition(5, 5)
@@ -25,7 +25,15 @@ void initControls()
     .setValue(10);
 }
 
-void draw()
-{
+void draw() {
   background(0);
+  for (Carnada c : carnadas) {
+    c.display();
+    c.update();
+  }
+}
+
+void mousePressed() {
+  Carnada c = new Carnada(mouseX, mouseY);
+  carnadas.add(c);
 }
