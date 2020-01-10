@@ -1,10 +1,10 @@
 import controlP5.*;
 
 ControlP5 cp5;
-ArrayList<Carnada> carnadas;
+ArrayList<Prey> carnadas;
 
 void setup() {
-  size(500, 500);
+  size(500, 500, P3D);
   background(0);
   initControls();
   carnadas = new ArrayList();
@@ -27,13 +27,13 @@ void initControls() {
 
 void draw() {
   background(0);
-  for (Carnada c : carnadas) {
+  for (Prey c : carnadas) {
     c.display();
     c.update();
   }
 }
 
 void mousePressed() {
-  Carnada c = new Carnada(mouseX, mouseY);
+  Prey c = new Prey(mouseX, mouseY);
   carnadas.add(c);
 }
