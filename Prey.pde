@@ -3,7 +3,7 @@ class Prey extends Agent{
   
   Prey(float x, float y){
     super(x, y);
-    super.mass = random(30, 40);
+    super.mass = random(40, 50);
   }
   
   void update(){ //Hacer que se mueva de forma aleatoria en el espacio
@@ -12,9 +12,8 @@ class Prey extends Agent{
   
   void display(){
     pushMatrix();
-    
     stroke(#3BFC80);
-    strokeWeight(this.size);
+    strokeWeight(sqrt(this.mass));
     point(pos.x, pos.y, pos.z);
     popMatrix();
   }

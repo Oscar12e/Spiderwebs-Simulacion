@@ -1,30 +1,33 @@
-//For Cp5 issues, not clean code I know
-float rlh = 60; //float rest lenght
-float k = 0.3;
+class Spring {
+  Node a1;
+  Node a2;
+  float restLength;
+  float k; //Coeficiente de elasticidad
 
-public class Spring {
-  Agent a1;
-  Agent a2;
-
-  Spring(Agent a1, Agent a2) {
-    this.a1 = a1;
-    this.a2 = a2;
+  Spring(Node a1, Node a2, float restLength, float k ) {
+    this.a1=a1;
+    this.a2=a2;
+    this.restLength=restLength;
+    this.k=k;
   }
 
-  void update() {    
-    PVector diff =  PVector.sub(a2.pos, a1.pos);
-    float dist = diff.mag();
-    diff.normalize();
-    float x = dist - rlh;
-    diff.mult(-k * x);
-    if (!a2.fixed) a2.applyForce(diff);
-    diff.mult(-1);
-    if (!a1.fixed) a1.applyForce(diff);
+  void display(){
+    //stroke(random(255),random(255),random(255));
+    stroke(255);
+    strokeWeight(0.5);
+    line(a1.posX,a1.posY,a2.posX,a2.posY);
   }
-
-  public void display() {
-    stroke(#3BFC80);
-    strokeWeight(1);
-    line(a1.pos.x, a1.pos.y, a1.pos.z, a2.pos.x, a2.pos.y, a2.pos.z);
+  
+  void update(){
+    PVector pos1 = new PVector(a1.posX,a1.posY);
+    PVector pos2 = new PVector(a2.posX,a2.posY); 
+    PVector dif= PVector.sub(pos2,pos1);
+    float dist= dif.mag();
+    dif.normalize();
+    float x = dist - restLength;
+    dif.mult(-k * x);  //Formula para la elasticidad
+    a2.applyForce(dif);
+    dif.mult(-1);
+    a1.applyForce(dif);    
   }
 }
