@@ -30,7 +30,6 @@ abstract class Agent {
     
   }
 
-
   void update() {
     if (fixed) return;
 
@@ -50,8 +49,15 @@ abstract class Agent {
     popMatrix();
   }
 
+  /*
   void applyForce(PVector f) {
     acc.add(f.copy().div(mass));
+  }*/
+  
+  void applyForce(PVector f) {
+    PVector force = f.copy();//Crea una copia del vector para no modificar el vector original 
+    force.div(mass);
+    acc.add(force);          //Se le suman las fuerzas y se van acumulando
   }
 
   void applyFriction() {

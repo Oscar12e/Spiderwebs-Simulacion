@@ -1,4 +1,4 @@
-class Wall{
+class Wall {
   color c1,c2,c3;
   
   Wall(){
