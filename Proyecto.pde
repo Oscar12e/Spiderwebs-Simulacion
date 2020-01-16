@@ -1,20 +1,13 @@
+import peasy.*;
+PeasyCam cam;
+
 ArrayList<Spring> springs;
-ArrayList<Node> nodes;
-Node leftNode, rightNode, downNode;
-boolean arrived=false;
+
 Spider spider;
 float k;
-Wall wall;
 
-float rNode;
-float posX = 9999, posY = 9999; // 9999 es cuando está sin punto central para construir
-float nodos = 0; //cuantos nodos base hay por costado
-float posNodoX = 300; //posicion inicial de la derecha
 
-//espiral
-float nodosEsp = 0;
-Node n1, n2, temp; // temp para guardar el nodo que ya no se crea
-float aumX = 10, aumY = 5;
+
 ArrayList<Node> nodesEspiral;
 ArrayList<Spring> springsEspiral;
 
@@ -26,9 +19,10 @@ SpiderWeb spiderWeb;
 ArrayList<Node> anchors;
 
 void setup() {
-  size(900, 900, P2D);
+  size(900, 900, P3D);
   background(0);
-
+  cam = new PeasyCam(this, width/2, height/2, 0, width);
+  
   springsEspiral = new ArrayList();
 
   center = new PVector(width/2, height/2);
@@ -65,8 +59,8 @@ void setup() {
     }
    
   }
-
-
+  
+  
 
     //spidy.buildWeb( new Node(center.x, center.y));
   }
@@ -76,14 +70,15 @@ void setup() {
 
     stroke(255);
 
-
-
     spidy.spiderWeb.display();
     spidy.display();
 
     spider.display();
 
     for (Spring s : springsEspiral) s.display();
+    
+    spider.update();
+  
   }
 
 /*
@@ -138,46 +133,6 @@ void draw() {
  spring.display();
  }
  }*/
-
-void iniciarConstruccion(float posX, float posY)
-{
-
-  if (nodos > 9 && nodos < 20) {
-    posNodoX -= 20;
-    rNode -= 20;
-  } else if (nodos > 19 && nodos < 30) {
-    rNode -= 40;
-  } else if (nodos > 29 && nodos < 40) {
-    posNodoX += 20;
-    rNode -= 20;
-  }
-  leftNode =new Node(posX, posY); 
-  rightNode = new Node(posNodoX, rNode);
-  downNode= new Node( width/4, height/4);
-  nodes.add(leftNode);
-  nodes.add(rightNode);
-  nodes.add(downNode);
-  //spider=new Spider(leftNode, rightNode, downNode);
-  nodos++;
-}
-
-void iniciarEspiral(float posX, float posY)
-{
-  if (nodosEsp == 0) {
-    n1 = new Node(posX+aumX, posY+aumY);
-    aumX += 5; 
-    aumY += 5;
-  } else
-    n1 = temp;
-  n2 = new Node(posX+aumX, posY+aumY);
-  nodesEspiral.add(n1);
-  nodesEspiral.add(n2);
-  temp = n2;
-  springsEspiral.add(new Spring(n1, n2, random(100, 200), k));
-  nodosEsp++;
-  aumX += 5; 
-  aumY += 5;
-}
 
 /*
 
