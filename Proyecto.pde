@@ -4,10 +4,13 @@ PeasyCam cam;
 ArrayList<Spring> springs;
 
 Spider spider;
+<<<<<<< HEAD
 float k;
 
 FlowField field;
 
+=======
+>>>>>>> 48278b61c25531caee7c3d9438050fe6c6f6eb70
 ArrayList<Node> nodesEspiral;
 ArrayList<Spring> springsEspiral;
 ArrayList<Prey> preys; //presas
@@ -22,14 +25,18 @@ void setup() {
   size(900, 900, P3D);
   background(0);
   cam = new PeasyCam(this, width/2, height/2, 0, width);
+<<<<<<< HEAD
 
   field = new FlowField(50, 1);
   preys = new ArrayList();
   springsEspiral = new ArrayList();
+=======
+  
+>>>>>>> 48278b61c25531caee7c3d9438050fe6c6f6eb70
 
   center = new PVector(width/2, height/2);
   spiderWeb = new SpiderWeb(center.x, center.y);
-  anchors = spiderWeb.nodes[spiderWeb.levels-1];
+  anchors = spiderWeb.anchors;
 
   Node spiderStart = anchors.get(0);
   Node spiderFinish = anchors.get( int( anchors.size()/2) );
@@ -41,6 +48,8 @@ void setup() {
   spider.spiderWeb = spiderWeb; 
 
 
+  
+  /*
   //Ir de punto a punto de las anclas
   for (int i = 0; i < anchors.size()/2; i++) {
     Node n1 = anchors.get( i );
@@ -59,17 +68,37 @@ void setup() {
       springsEspiral.add(new Spring(n1, n2));
       springsEspiral.add(new Spring(n2, n3));
     }
+<<<<<<< HEAD
+=======
+   
+  }*/
+  
+  
+
+    //spidy.buildWeb( new Node(center.x, center.y));
+>>>>>>> 48278b61c25531caee7c3d9438050fe6c6f6eb70
   }
 
 
 
+<<<<<<< HEAD
   //spidy.buildWeb( new Node(center.x, center.y));
 }
+=======
+    spiderWeb.display();
+    spidy.display();
+>>>>>>> 48278b61c25531caee7c3d9438050fe6c6f6eb70
 
 void draw() {
   background(0);
 
+<<<<<<< HEAD
   stroke(255);
+=======
+    //for (Spring s : springsEspiral) s.display();
+    
+    spider.update();
+>>>>>>> 48278b61c25531caee7c3d9438050fe6c6f6eb70
   
   field.update();
 
