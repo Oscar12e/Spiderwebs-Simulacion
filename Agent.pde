@@ -2,10 +2,10 @@
 Clase que define el comportamiento base de todos los agentes.
 Dado el alcance del proyecto, este agente no se divide en movibles y no movibles
 */
-float maxSpeed = 2;
+float maxSpeed = 20;
 float agentsMass = 1;
 float friction = 1;
-float arrivalDist = 200;
+float arrivalDist = 50;
 
 abstract class Agent {
   PVector pos, vel, acc;

@@ -4,10 +4,6 @@ PeasyCam cam;
 ArrayList<Spring> springs;
 
 Spider spider;
-float k;
-
-
-
 ArrayList<Node> nodesEspiral;
 ArrayList<Spring> springsEspiral;
 
@@ -23,11 +19,10 @@ void setup() {
   background(0);
   cam = new PeasyCam(this, width/2, height/2, 0, width);
   
-  springsEspiral = new ArrayList();
 
   center = new PVector(width/2, height/2);
   spiderWeb = new SpiderWeb(center.x, center.y);
-  anchors = spiderWeb.nodes[spiderWeb.levels-1];
+  anchors = spiderWeb.anchors;
 
   Node spiderStart = anchors.get(0);
   Node spiderFinish = anchors.get( int( anchors.size()/2) );
@@ -39,6 +34,8 @@ void setup() {
   spider.spiderWeb = spiderWeb; 
 
 
+  
+  /*
   //Ir de punto a punto de las anclas
   for (int i = 0; i < anchors.size()/2; i++) {
     Node n1 = anchors.get( i );
@@ -58,7 +55,7 @@ void setup() {
       springsEspiral.add(new Spring(n2, n3));
     }
    
-  }
+  }*/
   
   
 
@@ -70,12 +67,12 @@ void setup() {
 
     stroke(255);
 
-    spidy.spiderWeb.display();
+    spiderWeb.display();
     spidy.display();
 
     spider.display();
 
-    for (Spring s : springsEspiral) s.display();
+    //for (Spring s : springsEspiral) s.display();
     
     spider.update();
   
