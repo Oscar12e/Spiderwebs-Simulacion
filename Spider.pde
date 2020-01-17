@@ -160,8 +160,6 @@ class Spider extends Agent { //Agregado herencia a Agent
     }
 
     if (rowIndex == 0 && !arrived) { //Suba un nivel
-      print("\nB");
-
       ArrayList<Node> row = spiderWeb.nodes[level-1];
       PVector destiny = row.get(0).pos;
 
@@ -169,9 +167,8 @@ class Spider extends Agent { //Agregado herencia a Agent
       if (dif < 0.5) {
         level-=1;
         arrived = true;
-        print("\nO");
       }
-      print("\ndif"+dif);
+      
       arrive(destiny);
     } else if (!arrived) {
       float dif = PVector.dist(goal.pos, pos); 

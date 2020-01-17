@@ -21,7 +21,7 @@ void setup() {
   
 
   center = new PVector(width/2, height/2);
-  spiderWeb = new SpiderWeb(center.x, center.y);
+  spiderWeb = new SpiderWeb(center.x, center.y, center.x); //Cambie el tercer parametro
   anchors = spiderWeb.anchors;
 
   Node spiderStart = anchors.get(0);

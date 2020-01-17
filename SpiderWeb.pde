@@ -9,7 +9,7 @@ class SpiderWeb {
 
   int anchorsPlaced = 0; //Two are already placed
 
-  SpiderWeb(float x, float y, float radio) {
+  SpiderWeb(float x, float y, float z, float radio) {
     this.centerNode = new Node(x, y);
     this.radius = radio;
     this.nodes = new ArrayList[levels];
@@ -19,8 +19,8 @@ class SpiderWeb {
     createAnchors();
   }
 
-  SpiderWeb(float x, float y) {
-    this(x, y, 100);
+  SpiderWeb(float x, float y, float z) {
+    this(x, y, z, 100);
   }
 
   void createNodes() {
