@@ -21,7 +21,7 @@ void setup() {
   
 
   center = new PVector(width/2, height/2);
-  spiderWeb = new SpiderWeb(center.x, center.y, center.x); //Cambie el tercer parametro
+  spiderWeb = new SpiderWeb(center.x, center.y, 500); //Cambie el tercer parametro
   anchors = spiderWeb.anchors;
 
   Node spiderStart = anchors.get(0);
@@ -39,10 +39,23 @@ void setup() {
     background(0);
 
     stroke(255);
+    
+    
 
     spiderWeb.display();
     spidy.display();
     spidy.update();
+    
+    float lenght = 1000;
+    pushMatrix();
+    rectMode(CORNER);
+    //Due to the way a box works, we need to "fix" the display in the translate
+    translate(lenght/2,lenght/2,  lenght/2); 
+    noFill();
+    strokeWeight(1);
+    stroke(color(255));
+    box(lenght);
+    popMatrix();
 
 
     //for (Spring s : springsEspiral) s.display();

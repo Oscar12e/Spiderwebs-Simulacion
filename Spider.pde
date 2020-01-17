@@ -69,7 +69,7 @@ class Spider extends Agent { //Agregado herencia a Agent
   void display() {
     stroke(255);
     strokeWeight(15);
-    point(pos.x, pos.y);
+    point(pos.x, pos.y, pos.z);
     //strokeWeight(0.5);
     //line(posX,posY,pos.x,pos.y);
   }

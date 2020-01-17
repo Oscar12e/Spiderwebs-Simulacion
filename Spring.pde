@@ -21,12 +21,12 @@ class Spring {
     stroke(255);
     strokeWeight(0.5);
     
-    line(a1.pos.x,a1.pos.y,a2.pos.x,a2.pos.y);
+    line(a1.pos.x,a1.pos.y, a1.pos.z, a2.pos.x,a2.pos.y, a2.pos.z);
   }
   
   void update(){
-    PVector pos1 = new PVector(a1.pos.x,a1.pos.y);
-    PVector pos2 = new PVector(a2.pos.x,a2.pos.y); 
+    PVector pos1 = a1.pos.copy();// new PVector(a1.pos.x,a1.pos.y, a1.pos.z);
+    PVector pos2 = a2.pos.copy();// new PVector(a2.pos.x,a2.pos.y, a2.pos.z); 
     PVector dif= PVector.sub(pos2,pos1);
     float dist= dif.mag();
     dif.normalize();

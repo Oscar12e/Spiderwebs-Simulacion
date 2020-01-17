@@ -15,7 +15,7 @@ class Node extends Agent {
     if (fixed) strokeWeight(8);
     else strokeWeight(5);
     
-    point(pos.x,pos.y);
+    point(pos.x,pos.y, pos.z);
   }
   
   
