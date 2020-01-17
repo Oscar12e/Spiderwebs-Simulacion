@@ -1,8 +1,8 @@
 class Node extends Agent {
   
   
-  Node(float posX, float posY){
-    super(posX, posY, 3);
+  Node(float posX, float posY, float posZ ){
+    super(posX, posY, posZ,  3);
     mass = constrain(randomGaussian() * 5 + 250, 1, 10000);
     this.pos = super.pos;
   }

@@ -10,7 +10,7 @@ class SpiderWeb {
   int anchorsPlaced = 0; //Two are already placed
 
   SpiderWeb(float x, float y, float z, float radio) {
-    this.centerNode = new Node(x, y);
+    this.centerNode = new Node(x, y, z);
     this.radius = radio;
     this.nodes = new ArrayList[levels];
     this.anchors = new ArrayList();
@@ -48,11 +48,11 @@ class SpiderWeb {
         float y = centerNode.pos.y + rowRadius * cos(angle*i);
 
         if (indexes.contains(i)) {
-          rowNodes.add(new Node(x, y));
+          rowNodes.add(new Node(x, y, centerNode.pos.z));
         } else {
           float nx = randomGaussian() * 0.9 + x;
           float ny = randomGaussian() * 1.2 + y;
-          rowNodes.add(new Node(nx, ny));
+          rowNodes.add(new Node(nx, ny, centerNode.pos.z));
         }
       }
 
@@ -69,7 +69,7 @@ class SpiderWeb {
     for (int i = 0; i < numPoints; i++) {
       float x = centerNode.pos.x + rowRadius*sin(angle*i);
       float y = centerNode.pos.y + rowRadius * cos(angle*i);
-      Node n = new Node(x, y);
+      Node n = new Node(x, y, centerNode.pos.z);
       n.fixed = true;
       anchors.add(n);
     }

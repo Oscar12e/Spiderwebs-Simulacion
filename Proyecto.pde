@@ -33,33 +33,6 @@ void setup() {
   spider = new Spider(spiderFinish.pos.x, spiderFinish.pos.y);
   spider.spiderWeb = spiderWeb; 
 
-
-  
-  /*
-  //Ir de punto a punto de las anclas
-  for (int i = 0; i < anchors.size()/2; i++) {
-    Node n1 = anchors.get( i );
-    Node n2 = anchors.get( (anchors.size() / 2) + i );
-    n1.fixed = true;
-    n2.fixed = true;
-    springsEspiral.add(new Spring(n1, n2));
-  }
-
-  for (int k = 0; k < spiderWeb.nodes.length; k++) {
-    int n = spiderWeb.nodes[k].size();
-    for (int i = 0; i < n; i++) {
-      Node n1 = spiderWeb.nodes[k].get( (i-1+n)%n  );
-      Node n2 = spiderWeb.nodes[k].get( (i+n)%n);
-      Node n3 = spiderWeb.nodes[k].get( (i+1+n)%n);
-      springsEspiral.add(new Spring(n1, n2));
-      springsEspiral.add(new Spring(n2, n3));
-    }
-   
-  }*/
-  
-  
-
-    //spidy.buildWeb( new Node(center.x, center.y));
   }
 
   void draw() {
@@ -69,12 +42,12 @@ void setup() {
 
     spiderWeb.display();
     spidy.display();
+    spidy.update();
 
-    spider.display();
 
     //for (Spring s : springsEspiral) s.display();
     
-    spider.update();
+ 
   
   }
 
