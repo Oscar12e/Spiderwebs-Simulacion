@@ -101,23 +101,22 @@ class Spider extends Agent { //Agregado herencia a Agent
       current = knitting.reinforcing;
       arrived = false;
       return; //Go backwards with a better thread
-    }
-
-    if (rowIndex == 0 && !arrived) { //Suba un nivel
+    } else if (rowIndex == 0 && !arrived) { //Suba un nivel
       print("\nB");
       int nextRow;
       int diff = spiderWeb.levels - level;
-      if (diff > 4){
+      
+      if (diff > 4) {
         nextRow = level + 4;
-      } else if (diff == 0) {
+      } else if (level + diff >= spiderWeb.levels) {
         level = spiderWeb.levels;
         return;
       } else {
         nextRow = level + diff;
       }
-    
-      
-      
+
+
+
       ArrayList<Node> row = spiderWeb.nodes[nextRow];
       PVector destiny = row.get(0).pos;
 
@@ -151,7 +150,7 @@ class Spider extends Agent { //Agregado herencia a Agent
 
     super.update();
   }
-  
+
   void placingReinforcement() {
     if (level ==0) { //Trabajo terminado
       print("\nA");
