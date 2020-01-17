@@ -105,7 +105,7 @@ class Spider extends Agent { //Agregado herencia a Agent
       print("\nB");
       int nextRow;
       int diff = spiderWeb.levels - level;
-      
+
       if (diff > 4) {
         nextRow = level + 4;
       } else if (level + diff >= spiderWeb.levels) {
@@ -114,7 +114,6 @@ class Spider extends Agent { //Agregado herencia a Agent
       } else {
         nextRow = level + diff;
       }
-
 
 
       ArrayList<Node> row = spiderWeb.nodes[nextRow];
@@ -153,8 +152,10 @@ class Spider extends Agent { //Agregado herencia a Agent
 
   void placingReinforcement() {
     if (level ==0) { //Trabajo terminado
-      print("\nA");
-      current = knitting.finished;
+      float dif = PVector.dist(spiderWeb.centerNode.pos, pos); 
+      if (dif < 0.5) {
+        current = knitting.finished;
+      }
       return; //Go backwards with a better thread
     }
 
@@ -180,7 +181,6 @@ class Spider extends Agent { //Agregado herencia a Agent
         arrive(goal.pos);
       }
     } else {
-      print("\nC");
 
       ArrayList<Node> row = spiderWeb.nodes[level];
       Node n1 = row.get(rowIndex);
@@ -194,34 +194,4 @@ class Spider extends Agent { //Agregado herencia a Agent
 
     super.update();
   }
-
-
-  /* Se encuentra en Agent
-   void applyForce(PVector f){
-   acc.add(f);  //Se le suman las fuerzas y se van acumulando    
-   }
-   
-   void follow(Node node1,Node node2){
-   PVector actualPos = new PVector(node1.posX,node1.posY);  
-   PVector arrivalPos= new PVector(node2.posX,node2.posY);
-   PVector dif = PVector.sub(arrivalPos,actualPos);
-   dif.setMag(500);
-   applyForce(dif);
-   }
-   */
-
-
-  /*
-  void initialTravel(){
-   if (pos.x >= finalNode.posX) {
-   arrived=true;
-   }
-   if(!arrived) {
-   strokeWeight(0.5);
-   line(initialNode.posX,initialNode.posY,pos.x,pos.y);
-   follow(initialNode,finalNode);}
-   else {
-   follow(finalNode,initialNode);      
-   }
-   }*/
 }
