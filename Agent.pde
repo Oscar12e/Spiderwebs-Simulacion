@@ -65,6 +65,16 @@ abstract class Agent {
     applyForce(fric);
   }
   
+  void applyDrag()
+  {
+    PVector dragForce = vel.copy();
+    float v2 = dragForce.magSq();
+    dragForce.normalize();
+    dragForce.mult(v2);
+    dragForce.mult(-drag);
+    applyForce(dragForce);
+  }
+  
   void seek(PVector target) {
     PVector desired = PVector.sub(target, pos);
     desired.setMag(maxSpeed);

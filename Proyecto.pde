@@ -6,11 +6,11 @@ ArrayList<Spring> springs;
 Spider spider;
 float k;
 
-
+FlowField field;
 
 ArrayList<Node> nodesEspiral;
 ArrayList<Spring> springsEspiral;
-
+ArrayList<Prey> preys; //presas
 
 //Oscar
 PVector center;
@@ -22,7 +22,9 @@ void setup() {
   size(900, 900, P3D);
   background(0);
   cam = new PeasyCam(this, width/2, height/2, 0, width);
-  
+
+  field = new FlowField(50, 1);
+  preys = new ArrayList();
   springsEspiral = new ArrayList();
 
   center = new PVector(width/2, height/2);
@@ -57,30 +59,43 @@ void setup() {
       springsEspiral.add(new Spring(n1, n2));
       springsEspiral.add(new Spring(n2, n3));
     }
-   
-  }
-  
-  
-
-    //spidy.buildWeb( new Node(center.x, center.y));
   }
 
-  void draw() {
-    background(0);
 
-    stroke(255);
 
-    spidy.spiderWeb.display();
-    spidy.display();
+  //spidy.buildWeb( new Node(center.x, center.y));
+}
 
-    spider.display();
+void draw() {
+  background(0);
 
-    for (Spring s : springsEspiral) s.display();
-    
-    spider.update();
+  stroke(255);
   
-  }
+  field.update();
 
+  spidy.spiderWeb.display();
+  spidy.display();
+
+  spider.display();
+
+  for (Spring s : springsEspiral) s.display();
+
+  spider.update();
+
+  for (Prey p : preys) {
+    p.display();
+    p.update();
+    p.arrive((new PVector(mouseX, mouseY, mouseX)).mult(-1));
+  }
+}
+
+void mousePressed() {
+  if (mouseButton == RIGHT) {
+    Prey prey = new Prey(mouseX, mouseY);
+    prey.applyForce(PVector.random3D().setMag(100));
+    preys.add(prey);
+  }
+}
 /*
 void setup() {
  size(500, 500, P2D);

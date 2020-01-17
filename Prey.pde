@@ -2,12 +2,18 @@ class Prey extends Agent{
   boolean stuck; //Stuck on the web
   
   Prey(float x, float y){
-    super(x, y, 2);
-    super.mass = random(40, 50);
+    super(x, y, random(200, 700), random(150, 200));
+    //super.mass = random(40, 50);
   }
   
   void update(){ //Hacer que se mueva de forma aleatoria en el espacio
+    super.vel.add(acc);
+    super.pos.add(vel);
+    super.vel.limit(maxSpeed);
+    super.acc.mult(0);
     
+    applyFriction();
+    applyDrag();
   }
   
   void display(){
